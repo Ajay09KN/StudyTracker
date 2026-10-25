@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased transition-colors duration-200;
+  }
+
+  html.dark body {
+    @apply bg-ink-950 text-paper-200;
+  }
+
+  ::selection {
+    @apply bg-pine-300/60;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-pine-500 ring-offset-2 ring-offset-paper;
+  }
+
+  html.dark *:focus-visible {
+    @apply ring-offset-ink-950;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-paper-100 dark:bg-ink-900 border border-slate-200/70 dark:border-ink-700/70 rounded-2xl shadow-card dark:shadow-card-dark;
+  }
+
+  .label-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400;
+  }
+
+  .stat-figure {
+    @apply font-mono font-semibold tabular-nums;
+  }
+}
